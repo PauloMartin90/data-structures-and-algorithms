@@ -180,7 +180,6 @@ const fizzbuzz = (arr) => {
     }
 
   });
-  console.log(result)
   return result
 };
 
