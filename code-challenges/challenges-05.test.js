@@ -26,7 +26,24 @@ let starWarsPeople = [
 
 const sortStarWarsCharacters = (starWarsArr) => {
   // Solution code here...
+  console.log("🚀 ~ file: challenges-05.test.js ~ line 31 ~ starWarsArr.sort ~ starWarsArr", starWarsArr)
+
+    starWarsArr.sort(function(left, right) {
+
+      if(left.height < right.height){
+        return 1;
+      } else if(left.height > right.height){
+        return -1
+      } else {
+        return 0;
+      }
+    })
+
+    return starWarsArr
+
 }
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
