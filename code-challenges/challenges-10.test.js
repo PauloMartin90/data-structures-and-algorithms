@@ -24,6 +24,7 @@ Returns: ['dyoll', 'eimaj'];
 
 const getNames = (arr) => {
   // Solution code here...
+  return arr.map(item => item.name.split('').reverse().join(''));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -38,6 +39,16 @@ For example, count(5, [[1, 3, 5, 7, 9], [5, 5, 5], [1, 2, 3]]) returns 4.
 
 const count = (target, input) => {
   // Solution code here...
+  return input.reduce((total, currentValue) => {
+    total += currentValue.reduce((total_2, currentValue_2) => { 
+      if (currentValue_2 === target){
+        total_2 += 1;
+      }
+      return total_2;
+    }, 0);
+    return total;
+  }, 0);
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -52,6 +63,13 @@ For example, [[1, 2, 3, 4, 5], [6, 7, 2, 4, 5, 7], [9, 2, 3, 6,]] returns 66.
 
 const totalSum = (input) => {
   // Solution code here...
+  return input.reduce((tot, curr) => {
+    tot += curr.reduce((tot2, curr2) => {
+      tot2 += curr2;
+      return tot2;
+    }, 0);
+    return tot;
+  }, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -68,6 +86,15 @@ For example, [ [0,2,5,4], [2,4,10], [] ] should return [ [1, 32], [1024], [] ].
 
 const divisibleByFiveTwoToThePower = (input) => {
   // Solution code here...
+  return input.reduce((tot, curr) => {
+    tot.push(curr.reduce((tot2, curr2) => {
+      if(curr2 % 5 === 0 && typeof curr2 ==='number'){
+        tot2.push(Math.pow(2, curr2));
+      }
+      return tot2;
+    }, []));
+    return tot;
+  }, []);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -134,6 +161,12 @@ let starWarsData = [{
 
 let findMaleAndFemale = (data) => {
   // Solution code here...
+  return data.reduce((tot, curr) => {
+    if(curr.gender === 'male' || curr.gender === 'female'){
+      tot.push(curr.name);
+    }
+    return tot;
+  }, []).join(' and ');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -144,6 +177,14 @@ Write a function named findShortest that, given the Star Wars data from Challeng
 
 let findShortest = (data) => {
   // Solution code here...
+  const short_path =  data.reduce((tot, curr) => {
+    if(parseInt(curr.height) < tot.height){
+      tot = curr;
+    }
+    return tot;
+  });
+  return short_path.name;
+  
 };
 
 /* ------------------------------------------------------------------------------------------------
